@@ -1,0 +1,4 @@
+#Exectuable
+*.exe
+*~
+*.tar.gz
