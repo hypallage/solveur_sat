@@ -1,0 +1,20 @@
+
+pour compiler, lancer
+make
+
+puis taper 
+
+chmod +x ./resol
+
+1) pour lancer le mode saisie d'exemples en .cnf, lancer
+./calc ex.cnf avec ex.cnf le fichier contenant l'exemple.
+
+2) pour lancer le mode generation d'exemples aleatoires,
+ 
+- mettre en commentaire la partie :
+let _ = calc() 
+
+- decommenter la partie :
+let _ = testeur nb
+avec le nombre nb desire
+

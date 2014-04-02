@@ -1,0 +1,46 @@
+### Starting build.
+# Target: main.ml.depends, tags: { extension:ml, file:main.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules main.ml > main.ml.depends # cached
+# Target: algo.ml.depends, tags: { extension:ml, file:algo.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules algo.ml > algo.ml.depends # cached
+# Target: types.ml.depends, tags: { extension:ml, file:types.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules types.ml > types.ml.depends # cached
+# Target: types.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:types.cmo, file:types.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o types.cmo types.ml # cached
+# Target: algo.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:algo.cmo, file:algo.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o algo.cmo algo.ml # cached
+# Target: lexer.mll, tags: { extension:mll, file:lexer.mll, lexer, ocaml, ocamllex, quiet }
+/usr/bin/ocamllex -q lexer.mll # cached
+# Target: lexer.ml.depends, tags: { extension:ml, file:lexer.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules lexer.ml > lexer.ml.depends # cached
+# Target: parser.mly, tags: { extension:mly, file:parser.mly, ocaml, ocamlyacc, parser, quiet }
+/usr/bin/ocamlyacc -v parser.mly # cached
+# Target: parser.mli.depends, tags: { extension:mli, file:parser.mli, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules parser.mli > parser.mli.depends # cached
+# Target: parser.cmi, tags: { byte, compile, extension:mli, file:parser.mli, interf, ocaml, quiet }
+/usr/bin/ocamlc -c -o parser.cmi parser.mli # cached
+# Target: lexer.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:lexer.cmo, file:lexer.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o lexer.cmo lexer.ml # cached
+# Target: tests.ml.depends, tags: { extension:ml, file:tests.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules tests.ml > tests.ml.depends # cached
+# Target: tests.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:tests.cmo, file:tests.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o tests.cmo tests.ml # cached
+# Target: main.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:main.cmo, file:main.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o main.cmo main.ml # cached
+# Target: types.cmx, tags: { compile, extension:cmx, extension:ml, file:types.cmx, file:types.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt -c -o types.cmx types.ml # cached
+# Target: algo.cmx, tags: { compile, extension:cmx, extension:ml, file:algo.cmx, file:algo.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt -c -o algo.cmx algo.ml # cached
+# Target: parser.ml.depends, tags: { extension:ml, file:parser.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules parser.ml > parser.ml.depends # cached
+# Target: parser.cmx, tags: { compile, extension:cmx, extension:ml, file:parser.cmx, file:parser.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt -c -o parser.cmx parser.ml # cached
+# Target: lexer.cmx, tags: { compile, extension:cmx, extension:ml, file:lexer.cmx, file:lexer.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt -c -o lexer.cmx lexer.ml # cached
+# Target: tests.cmx, tags: { compile, extension:cmx, extension:ml, file:tests.cmx, file:tests.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt -c -o tests.cmx tests.ml # cached
+# Target: main.cmx, tags: { compile, extension:cmx, extension:ml, file:main.cmx, file:main.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt -c -o main.cmx main.ml # cached
+# Target: main.native, tags: { dont_link_with, extension:native, file:main.native, link, native, ocaml, program, quiet }
+/usr/bin/ocamlopt unix.cmxa types.cmx algo.cmx parser.cmx lexer.cmx tests.cmx main.cmx -o main.native # cached
+# Compilation successful.

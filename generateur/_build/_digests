@@ -1,0 +1,5 @@
+"Rule: ocaml: ml -> cmo & cmi (%=main )": "\022/ @\221\235\208\000\173fS\166\129Ey\251"
+"Resource: /home/waufort/Documents/projet_2/generateur/main.ml": "|zNr!\203?\221\154\166j\235\180l\244\006"
+"Rule: ocaml: ml & cmi -> cmx & o (%=main )": "\029\018[\199\015Q\235N/\177$\177\212\210\222]"
+"Rule: ocaml: cmx* & o* -> native (%=main )": "\233\0212W\015E<\232\183\202\158\024\190.\2356"
+"Rule: ocaml dependencies ml (%=main )": "\130\150\161\185\002\238u3,\195\194\254z\218P\019"

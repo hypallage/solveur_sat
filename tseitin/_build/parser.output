@@ -1,0 +1,191 @@
+   0  $accept : %entry% $end
+
+   1  main : form EOF
+
+   2  form : VAR
+   3       | LPAREN form RPAREN
+   4       | form AND form
+   5       | form OR form
+   6       | form IMPLIES form
+   7       | NOT form
+
+   8  %entry% : '\001' main
+
+state 0
+	$accept : . %entry% $end  (0)
+
+	'\001'  shift 1
+	.  error
+
+	%entry%  goto 2
+
+
+state 1
+	%entry% : '\001' . main  (8)
+
+	VAR  shift 3
+	NOT  shift 4
+	LPAREN  shift 5
+	.  error
+
+	main  goto 6
+	form  goto 7
+
+
+state 2
+	$accept : %entry% . $end  (0)
+
+	$end  accept
+
+
+state 3
+	form : VAR .  (2)
+
+	.  reduce 2
+
+
+state 4
+	form : NOT . form  (7)
+
+	VAR  shift 3
+	NOT  shift 4
+	LPAREN  shift 5
+	.  error
+
+	form  goto 8
+
+
+state 5
+	form : LPAREN . form RPAREN  (3)
+
+	VAR  shift 3
+	NOT  shift 4
+	LPAREN  shift 5
+	.  error
+
+	form  goto 9
+
+
+state 6
+	%entry% : '\001' main .  (8)
+
+	.  reduce 8
+
+
+state 7
+	main : form . EOF  (1)
+	form : form . AND form  (4)
+	form : form . OR form  (5)
+	form : form . IMPLIES form  (6)
+
+	AND  shift 10
+	OR  shift 11
+	IMPLIES  shift 12
+	EOF  shift 13
+	.  error
+
+
+state 8
+	form : form . AND form  (4)
+	form : form . OR form  (5)
+	form : form . IMPLIES form  (6)
+	form : NOT form .  (7)
+
+	.  reduce 7
+
+
+state 9
+	form : LPAREN form . RPAREN  (3)
+	form : form . AND form  (4)
+	form : form . OR form  (5)
+	form : form . IMPLIES form  (6)
+
+	AND  shift 10
+	OR  shift 11
+	IMPLIES  shift 12
+	RPAREN  shift 14
+	.  error
+
+
+state 10
+	form : form AND . form  (4)
+
+	VAR  shift 3
+	NOT  shift 4
+	LPAREN  shift 5
+	.  error
+
+	form  goto 15
+
+
+state 11
+	form : form OR . form  (5)
+
+	VAR  shift 3
+	NOT  shift 4
+	LPAREN  shift 5
+	.  error
+
+	form  goto 16
+
+
+state 12
+	form : form IMPLIES . form  (6)
+
+	VAR  shift 3
+	NOT  shift 4
+	LPAREN  shift 5
+	.  error
+
+	form  goto 17
+
+
+state 13
+	main : form EOF .  (1)
+
+	.  reduce 1
+
+
+state 14
+	form : LPAREN form RPAREN .  (3)
+
+	.  reduce 3
+
+
+state 15
+	form : form . AND form  (4)
+	form : form AND form .  (4)
+	form : form . OR form  (5)
+	form : form . IMPLIES form  (6)
+
+	OR  shift 11
+	AND  reduce 4
+	IMPLIES  reduce 4
+	RPAREN  reduce 4
+	EOF  reduce 4
+
+
+state 16
+	form : form . AND form  (4)
+	form : form . OR form  (5)
+	form : form OR form .  (5)
+	form : form . IMPLIES form  (6)
+
+	.  reduce 5
+
+
+state 17
+	form : form . AND form  (4)
+	form : form . OR form  (5)
+	form : form . IMPLIES form  (6)
+	form : form IMPLIES form .  (6)
+
+	AND  shift 10
+	OR  shift 11
+	IMPLIES  reduce 6
+	RPAREN  reduce 6
+	EOF  reduce 6
+
+
+11 terminals, 4 nonterminals
+9 grammar rules, 18 states

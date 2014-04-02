@@ -1,0 +1,24 @@
+TODO : 
+
+- Dans tseitin, trouver le moyen de pouvoir passer en argument le nom du 
+  fichier dans lequel il faut enregistrer la cnf issu de tseitin.
+
+- generer des clauses/formules aleatoires
+
+- Voir avec minisat comment choisir le ratio nb_clauses/nb_var tel qu'il y ait 
+  quand meme des formules insatisfiables ( nombre de clauses precis ou avec une 
+  certaine marge ? ) 
+
+- Faire un grand fichier de tests avec les differentes heuristiques
+- Ordre des differents algos : 
+  1) sans heuristiques 
+  2) RAND
+  3) MOMS 
+  4) MOMS2 ( avec amelioration variables fausses ) 
+  5) DLIS1
+  6) DLIS2 ( avec la variante des polys ) 
+
+- Pour les graphiques, on piochera dans ce fichier de tests. --> cf exp hischkoff
+
+- bash : rajouter l'option tseitin. 
+

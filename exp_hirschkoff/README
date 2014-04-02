@@ -1,0 +1,50 @@
+Les fichiers contenus dans ce repertoire illustrent l'utilisation de
+petits scripts simples pour faire tourner des tests.
+
+
+Tapez ce qui suit, et observez deux jolies courbes:
+
+make
+bash run-tests.sh 
+gnuplot -persist script-plot.p
+
+
+Maintenant des explications:
+
+1/ On s'appuie sur deux exemples simples: make a pour effet de creer
+deux executables, fibo.native et fibo_memo.native (deux versions de la
+suite de Fibonacci en Caml, la seconde etant plus efficace grace a
+l'utilisation d'une technique de "memorisation" -- a tel point qu'on
+est oblige de ralentir cette derniere pour observer quelque chose). Il
+n'est pas utile d'aller regarder le source Caml de ces programmes,
+sauf si ca vous fait rire de regarder la partie memorisation.
+
+2/ Lisez et comprenez le script run-tests.sh (commande bash
+run-tests.sh), qui a pour effet de lancer les executables sur divers
+tests, et de recolter les donnees dans le fichier comparaison.dat.
+
+Regardez le fichier comparaison.dat qui est produit par ce script, et
+comprenez pourquoi il est fait ainsi.
+
+
+3/ Lancez la commande
+gnuplot -persist script-plot.p
+
+Vous pouvez egalement editer le fichier script-plot.p pour decommenter
+les deux lignes qui feront que vous pourrez recuperer la courbe dans
+un fichier pdf.
+
+
+
+
+Voila, ceci est un point de depart, a partir duquel vous pourrez
+elaborer, en vous aidant eventuellement de tutoriels disponibles en
+ligne, pour adapter la moulinette a vos besoins. A noter que la partie
+2/ ci-dessus peut se faire a l'interieur de votre code, sans forcement
+passer par un script bash.
+
+Des URLs de tutoriels:
+http://www.tldp.org/LDP/Bash-Beginners-Guide/html/
+http://physicspmb.ukzn.ac.za/index.php/Gnuplot_tutorial
+
+

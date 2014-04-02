@@ -2,3 +2,5 @@
 *.exe
 *~
 *.tar.gz
+old/*
+_build/*

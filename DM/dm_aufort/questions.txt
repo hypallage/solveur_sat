@@ -1,0 +1,24 @@
+REPONSES AUX QUESTIONS :
+
+Question 1 : Comment trouver une affectation des variables dans le cas satisfiable ?
+
+L'idee est de revenir en arriere sur les seaux.
+Quand on a fini de descendre dans les seaux en calculant les resolvants cela signifie que nous n'avons plus de conditions sur les variables a verifier.
+
+Une condition resulte du fait que, quand on calcule le resolvant dans un seau k, la clause obtenue sera satisfaite, et donc un de ses litteraux sera a true. Mais ici on aurait une vision sous la forme d'un conseil ( ex: si bli est a true, alors il vaut mieux mettre x_k a false ... ) En aucun cas on a une certitude que ca se propage ensuite en une solution.
+
+Ainsi il nous faut plutot des regles certaines, et elles s'obtiennent directement a partir des clauses.
+Exemple : la clause x1 et non x2 et x3 donne la regle :
+si x1 est a faux et x2 est a vrai, alors NECESSAIREMENT x3 est a vrai.
+
+De plus pour retenir ce genre de regle, pas besoin d'une nouvelle clause : l'information est deja contenue dans la clause elle meme, il suffit de faire attention quand on evalue une telle clause a inverse pos et neg, comme fait dans l'algorithme.
+
+Question 2 : A partir de quel moment le programme repond en plus de 5 minutes ?
+
+Le programme de generation de tests aleatoires fournit est un peu simple : generer un nombre determine de clause ( 4 * nb_de_variables ) d'une taille allant de 3 a 6, avec des probabilites decrites dans le fichier tests.ml.
+Ces tests se sont reveles d'une grande importance quand j'ai vu que l'execution du programme sur les exemple .cnf fournis ( de 1 a 5) se finissaient tous par un out_of_memory.
+J'ai remarque que jusque 9 variables, l'algorithme renvoyait toujours la bonne reponse tres rapidement ( toujours < 1 sec ), mais des qu'on passait a 10 variables ( et donc (seulement) 4 clauses de plus, l'algorithme ne terminait jamais.
+
+Comment expliquer de tels resultats ?
+- probleme de memoire : ceci peut venir du nombre de clauses potentiellement important dans des seaux. Notamment certaines clauses peuvent etre redondantes, ou incluses( au sens de leurs solutions) dans d'autres clauses. Cependant leur recherche semble etre tres laborieuse (et donc tres lente). Je n'ai pas eu le temps d'implementer cette option.
+- probleme de temps : certaines ameliorations ont ete effectuees au cours de la formation de ce dm (s'arreter des qu'une solution a ete trouvee, ...), mais des problemes de temps tres genant apparaissent tout de meme dans une soudainete assez surprenante. Je n'ai pas trouve d'explication a ce phenomene.
