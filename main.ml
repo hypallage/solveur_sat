@@ -5,7 +5,7 @@
 (* Pour l'instant, le choix du nombre de variables et 
    du nombre de clauses ne nous interesse pas. *)
 
-let random_variable n = 
+let random_variable n =
   let x = (Random.int n) + 1
   and signe = Random.int 2 in 
   if signe = 0 then (-x) else x ;;
