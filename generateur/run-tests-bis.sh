@@ -2,11 +2,12 @@
 
 # preparation du fichier comparaison.dat: on l'enleve s'il existe, 
 # on ecrit l'en-tete des colonnes
-rm -f nb_satisf.dat
+rm -f ratio.dat
+echo "nb_var ratio" >> ratio.dat
 
 min=6
 max=6
-nb_formules=3
+nb_formules=5
 
 # une boucle for:
 # la variable entree parcourt toutes les valeurs que renvoie la commande
@@ -18,30 +19,41 @@ nb_formules=3
 
 for entree in `seq $min $max`; do
 
-nb_clauses=$((entree*2))
-echo $nb_clauses
+ratio=2
+encore=1
+while [ "$encore" -ge 0 ] 
+  do
+    rm -f nb_satisf.dat
+    nb_clauses=$((entree*ratio))
+    echo $nb_clauses
+    for i in `seq 1 $nb_formules`; do
+	./calc $entree $nb_clauses 
+	minisat ex.cnf solution.txt
 
-for i in `seq 1 $nb_formules`; do
+	if grep SAT solution.txt 
+          then
+	    if grep UNSAT solution.txt 
+	      then (echo "unsat")
+	      else (echo "sat"
+                    echo "1" >> nb_satisf.dat)
+	    fi
+          else echo "invalide" 
+        fi
 
-echo $nb_clauses
-./calc $entree $nb_clauses 
-minisat ex.cnf solution.txt
+   done
 
-if grep SAT solution.txt 
-    then
-	 if grep UNSAT solution.txt 
-	 then (echo "unsat")
-	 else (echo "sat"
-               echo "1" >> nb_satisf.dat)
-	 fi
-    else echo "invalide" 
+deux_fois_nb_satisf=$(wc -m nb_satisf.dat | cut -d " " -f 1) 
+
+if [ $deux_fois_nb_satisf -ge $nb_formules ] 
+  then ( echo $entree $ratio >> ratio.dat
+         encore=$((encore-2))
+         echo La valeur de \$encore est \"$encore\".
+         )
+  else ( echo Echec
+         ratio=$((ratio+1)) )
 fi
 
 done
-
-deux_fois_nb_satisf=$(wc -m nb_satisf.dat) 
-
-echo $deux_fois_nb_satisf
 
 done
 

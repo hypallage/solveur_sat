@@ -1,6 +1,10 @@
 #!/bin/bash
-declare -i val1=12
-declare -i val2=5
-declare -i resultat
-resultat=val1*val2
-echo $resultat
+ 
+nbbooks=0
+fin=3
+while [ "$nbbooks" != "$fin" ] 
+    do
+	nbbooks=$((nbbooks + 1))
+	echo "$nbbooks dans la boucle"
+    done
+echo "$nbbooks dehors a boucle"

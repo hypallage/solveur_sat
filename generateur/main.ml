@@ -124,6 +124,7 @@ let exec nb_clauses nb_var =
 
 let _ =
   let data = Sys.argv in 
+  Random.self_init () ;
   let nb_var = int_of_string (data.(1)) 
   and nb_clauses = int_of_string (data.(2)) 
   in exec nb_clauses nb_var ;; 
