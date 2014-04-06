@@ -32,16 +32,13 @@ let rec random_clause nb_var_clau nb_var =
 
 (* Un exemple *) 
 
-
-
 let random_nb_var nb_max = (* totalement aleatoire *)
   (Random.int nb_max) + 1 ;; 
    
   
 let rec random_formule nb_clauses nb_max = 
   if nb_clauses = 0 then [] 
-  else let nb_var_clau = random_nb_var nb_max in  
-  let c = random_clause nb_var_clau nb_max in 
+  else let c = random_clause 3 nb_max in 
   c::(random_formule (nb_clauses-1) nb_max) ;;
 
 (* Generation de fichier d'exemple : avec bash ! *) 
@@ -77,8 +74,6 @@ let ecrire f fichier nb_var nb_clauses =
  |c::q -> ecrire_clause c fichier ; 
           aux q ;
   in aux f ;;  
-
-(* Les tests *)
 
 
 let exec nb_clauses nb_var = 

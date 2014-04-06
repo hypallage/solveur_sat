@@ -104,7 +104,7 @@ let resoud () = let entree = parse () in
 ;;
 
 
-let _ =resoud ();;
+let _ =Random.self_init;resoud ();;
 
 
 
