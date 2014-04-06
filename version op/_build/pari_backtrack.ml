@@ -43,7 +43,7 @@ let pari_rand tab_aff nbvar nblitf tabclau t_cl_v tab_act_pos tab_act_neg =
   k_ieme var_inconnues rand ;;
 (*Heuristique MOMS sans tenir compte des variables fausses*)
 let clautaillmin nbvar t_cl_v =print_int 1;
-	let rec clatm numclau min rep =
+	let rec clatm numclau min rep =print_int 1;
 		if (numclau = Array.length t_cl_v)
 			then rep
 			else (match t_cl_v.(numclau) with
@@ -57,14 +57,14 @@ let clautaillmin nbvar t_cl_v =print_int 1;
 						else clatm (numclau+1) min (numclau::rep)))
 	in clatm 1 0 []
 ;;
-let rec remp tab_pos tab_neg clau= match clau with
+let rec remp tab_pos tab_neg clau=print_int 1; match clau with
 |[] -> ()
 |t::q -> if t>0
 	then (tab_pos.(t) <- tab_pos.(t) +1;remp tab_pos tab_neg q)
 	else (tab_neg.(abs t) <- tab_neg.(abs t) +1;remp tab_pos tab_neg q)
 ;;
  
-let occur_liste liste tabclau nbvar=
+let occur_liste liste tabclau nbvar=print_int 1;
 let tab_occur_pos=Array.create (Array.length nbvar) 0 
 and tab_occur_neg=Array.create (Array.length nbvar) 0 in
 	let rec ocl lis tab_pos tab_neg=match liste with

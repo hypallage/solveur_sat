@@ -44,10 +44,15 @@ while [ "$encore" -ge 0 ]
 
 deux_fois_nb_satisf=$(wc -m nb_satisf.dat | cut -d " " -f 1) 
 
-if [ $deux_fois_nb_satisf -ge $nb_formules ] 
+echo $deux_fois_nb_satisf
+echo $nb_formules
+
+if [ $deux_fois_nb_satisf -le $nb_formules ] 
   then ( echo $entree $ratio >> ratio.dat
          encore=$((encore-2))
          echo La valeur de \$encore est \"$encore\".
+         break
+         echo Coucou
          )
   else ( echo Echec
          ratio=$((ratio+1)) )

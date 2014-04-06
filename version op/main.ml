@@ -103,7 +103,8 @@ let resoud pariheu = let entree = parse () in
 ;;
 
 
-let _ =resoud pari_moms;;
+let _ =resoud pari;;
+
 
 
 
