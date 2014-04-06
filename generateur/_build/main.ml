@@ -16,13 +16,13 @@ let rec insere x l =
 | t::q -> if abs t = abs x then false
            else insere x q ;;
 
-let rec random_clause n = 
-  if n = 0 then [] 
-  else let l = random_clause (n-1) 
+let rec random_clause nb_var_clau nb_var = 
+  if nb_var_clau = 0 then [] 
+  else let l = random_clause (nb_var_clau-1) nb_var
   in let boo = ref true 
   and x = ref 0 in
   while (!boo) do 
-    x := random_variable n ;
+    x := random_variable nb_var ;
     if insere (!x) l then
     boo := false ;
   done ; !x::l ;;
@@ -32,13 +32,7 @@ let rec random_clause n =
 
 (* Un exemple *) 
 
-let choix_nb_var _ = (* genre 3 SAT *)
-   let x = Random.float 1. in 
-   if x < 0.7 then 3
-   else if x < 0.8 then 4
-   else if x < 0.9 then 5   
-   else if x < 0.95 then 2
-   else 6 ;;
+
 
 let random_nb_var nb_max = (* totalement aleatoire *)
   (Random.int nb_max) + 1 ;; 
@@ -46,8 +40,8 @@ let random_nb_var nb_max = (* totalement aleatoire *)
   
 let rec random_formule nb_clauses nb_max = 
   if nb_clauses = 0 then [] 
-  else let nb_var = random_nb_var nb_max in  
-  let c = random_clause nb_var in 
+  else let nb_var_clau = random_nb_var nb_max in  
+  let c = random_clause nb_var_clau nb_max in 
   c::(random_formule (nb_clauses-1) nb_max) ;;
 
 (* Generation de fichier d'exemple : avec bash ! *) 
@@ -85,37 +79,7 @@ let ecrire f fichier nb_var nb_clauses =
   in aux f ;;  
 
 (* Les tests *)
-(* afficher en console *)
 
-(*let print_clause l = 
-  let rec aux l =  
-  match l with
-  [] -> print_string "]" ;
- |t::q -> print_int t ;
-          match q with
-          [] -> print_string "]" ;
-         |_ -> print_string ";" ; aux q 
-  in print_string "[" ; 
-  aux l ;;
-
-let print_formule l = 
-  let rec aux l =  
-  match l with
-  [] -> print_string "]" ;
- |c::q -> print_clause c ;
-          match q with
-          [] -> print_string "]" ;
-         |_ -> print_string ";" ; aux q 
-  in print_string "[" ; 
-  aux l ;;
-
-let test1 () =   
-  print_string "Entrer le nombre de clauses souhaite \n" ;
-  let nb_clauses = read_int() in
-  print_string "\n Entrer le nombre de variables \n" 
-  let nb_var = read_int() in 
-  let f = random_formule nb_clauses nb_var in 
-  print_formule f ;;*)
 
 let exec nb_clauses nb_var = 
   let f = random_formule nb_clauses nb_var in 

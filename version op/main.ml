@@ -103,7 +103,7 @@ let resoud pariheu = let entree = parse () in
 ;;
 
 
-let _ =resoud pari_moms;;
+let _ =Random.self_init;resoud pari_moms;;
 
 
 
