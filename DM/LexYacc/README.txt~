@@ -1,0 +1,9 @@
+
+pour compiler, lancer
+make
+
+pour executer le programme, lancer
+./calc
+
+entrer une expression arithmetique (avec juste + et *)
+

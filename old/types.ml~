@@ -1,0 +1,36 @@
+(*////// Types /////*)
+ 
+(*nb_var: int;;             
+  nb_clauses_actives: int;;          
+( nb_var_f : int array);;  
+( nb_var : int array);; *)   
+type clause == int list ;;     
+type formule == clause vect ;;
+type val_verite = Vrai | Faux | Inconnu ;;
+type affectation == val_verite vect ;;
+type pari == (int * int list) list;;
+(*
+Ce sont les exceptions qu'on utilise insatisfiable et clausevrai reflètent des erreurs à
+l'execution. Tandis que poldouble indique juste que on a une cluse avec la variable positive 
+et une avec la variable à faux.probleme est si on a mis une clause à faux (Cela ne doit jamais
+arriver).L'execption conflit sert à indiquer qu'on doit backtracker.
+*)
+exception conflit;;
+exception poldouble;;
+exception clausevrai;;
+exception insatisfiable;;
+exception probleme;;
+exception clausenondes;;
+
+exception solvable ;;
+
+(* activite = activite de la clause *)
+
+(*(tabl_app_var_pos_act : int list array);;
+  contient dans la case i le numero des clauses actives ou 
+  la variable i apparait positivement 
+(tabl_app_var_pos_des : int list array);; vide au debut
+(tabl_app_var_neg_act : int list array);;
+(tabl_app_var_neg_des : int list array);; vide au debut
+type pari=(int * int list) list;;         vide au debut*)
+

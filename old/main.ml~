@@ -1,0 +1,27 @@
+
+(* afficher l'entrée de manière "brute" (test) *)
+
+let affiche_entree_brute l = 
+  let rec aux l = 
+  begin
+    match l with 
+      [] -> print_string "]"
+    |t::q -> begin 
+             print_int t ;
+             print_string "," ;
+             aux q ;
+             end
+  end
+  in
+  print_string "[" ;
+  aux l 
+
+let lexbuf = Lexing.from_channel stdin
+
+let parse () = Parser.main Lexer.token lexbuf
+
+let _ = 
+  try( 
+     let resultat = parse() in 
+     affiche_entree_brute resultat )
+  with _ -> print_string "erreur de saisie\n" 

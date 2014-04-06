@@ -1,0 +1,32 @@
+(* un type pour les clauses  *)
+(* Un tableau de taille fixée par le nombre de variables 
+ L'accès est alors instantané pour savoir si une variable 
+ apparait dans une clause *)
+
+type clause = int vect
+
+(* Une type pour les formules *)
+(* Une liste de clauses de taille quelconque *)
+
+type formule = clause list 
+  
+
+(* fonction d'affichage *)
+let rec affiche_expr e =
+  let aff_aux s a b = 
+      begin
+	print_string s;
+	affiche_expr a;
+	print_string ", ";
+	affiche_expr b;
+	print_string ")"
+      end
+  in
+  match e with
+  | Const k -> print_int k
+  | Add(e1,e2) -> aff_aux "Add(" e1 e2
+  | Mul(e1,e2) -> aff_aux "Mul(" e1 e2
+
+
+
+  

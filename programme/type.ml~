@@ -1,0 +1,22 @@
+(*//////////////////// GESTION DES DONNEES /////////////////////////
+/  Pour manier les données nous avons choisi :                     /
+/  1) Un tableau qui à une variable associe la clause dans         /
+/  laquelle elle apparait avec sa polarite                         /
+/  2) Un tableau de clauses où une clause est la donnee            /
+/     - d'un booléen indiquant si la clause est vraie              /
+/     - d'un entier indiquant le numero du pari duquel ca découle  /
+/     ( 0 si ca ne découle d'aucun pari )                          /
+/     - du nombre de variables à faux (traiter les cas clauses     /
+/     unitaires et clauses vides )                                 /
+/     - du nombre de variables ( pour faire un "bon" pari )        /
+/     - de la liste des litteraux avec la valeur associee          /
+/     ( Faux ou Inconnu )                                          /
+/  3) Une liste des paris effectues ainsi que la liste des         /
+/  deductions                                                      /
+//////////////////////////////////////////////////////////////////*)
+
+
+
+type formule = int list array
+
+type paris = (int * int list) list
