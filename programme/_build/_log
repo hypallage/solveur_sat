@@ -1,6 +1,6 @@
 ### Starting build.
 # Target: main.ml.depends, tags: { extension:ml, file:main.ml, ocaml, ocamldep, quiet }
-/usr/bin/ocamldep -modules main.ml > main.ml.depends # cached
+/usr/bin/ocamldep -modules main.ml > main.ml.depends
 # Target: atomes.ml.depends, tags: { extension:ml, file:atomes.ml, ocaml, ocamldep, quiet }
 /usr/bin/ocamldep -modules atomes.ml > atomes.ml.depends # cached
 # Target: types.ml.depends, tags: { extension:ml, file:types.ml, ocaml, ocamldep, quiet }
@@ -34,7 +34,11 @@
 # Target: pretraitement.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:pretraitement.cmo, file:pretraitement.ml, implem, ocaml, quiet }
 /usr/bin/ocamlc -c -o pretraitement.cmo pretraitement.ml # cached
 # Target: main.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:main.cmo, file:main.ml, implem, ocaml, quiet }
-/usr/bin/ocamlc -c -o main.cmo main.ml # cached
+/usr/bin/ocamlc -c -o main.cmo main.ml
++ /usr/bin/ocamlc -c -o main.cmo main.ml
+File "main.ml", line 107, characters 7-23:
+Warning 5: this function application is partial,
+maybe some arguments are missing.
 # Target: types.cmx, tags: { compile, extension:cmx, extension:ml, file:types.cmx, file:types.ml, implem, native, ocaml, quiet }
 /usr/bin/ocamlopt -c -o types.cmx types.ml # cached
 # Target: atomes.cmx, tags: { compile, extension:cmx, extension:ml, file:atomes.cmx, file:atomes.ml, implem, native, ocaml, quiet }
@@ -52,7 +56,11 @@
 # Target: pretraitement.cmx, tags: { compile, extension:cmx, extension:ml, file:pretraitement.cmx, file:pretraitement.ml, implem, native, ocaml, quiet }
 /usr/bin/ocamlopt -c -o pretraitement.cmx pretraitement.ml # cached
 # Target: main.cmx, tags: { compile, extension:cmx, extension:ml, file:main.cmx, file:main.ml, implem, native, ocaml, quiet }
-/usr/bin/ocamlopt -c -o main.cmx main.ml # cached
+/usr/bin/ocamlopt -c -o main.cmx main.ml
++ /usr/bin/ocamlopt -c -o main.cmx main.ml
+File "main.ml", line 107, characters 7-23:
+Warning 5: this function application is partial,
+maybe some arguments are missing.
 # Target: main.native, tags: { dont_link_with, extension:native, file:main.native, link, native, ocaml, program, quiet }
-/usr/bin/ocamlopt unix.cmxa types.cmx atomes.cmx parser.cmx lexer.cmx propagation.cmx pari_backtrack.cmx pretraitement.cmx main.cmx -o main.native # cached
+/usr/bin/ocamlopt unix.cmxa types.cmx atomes.cmx parser.cmx lexer.cmx propagation.cmx pari_backtrack.cmx pretraitement.cmx main.cmx -o main.native
 # Compilation successful.
