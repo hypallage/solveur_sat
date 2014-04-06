@@ -31,11 +31,11 @@ let uneafec tab_act_pos tab_act_neg nb_lit nb_lit_f t_cl_v tab_aff  paris tabcla
 conflitoupas nb_lit nb_lit_f t_cl_v;
 match deduction tab_act_pos tab_act_neg nb_lit nb_lit_f t_cl_v tab_aff tabclau with
 		| None -> let b=pariheu tab_aff nb_lit nb_lit_f tabclau t_cl_v tab_act_pos tab_act_neg in
-				paris:= (b,[])::!paris;print_string "on parie sur ";print_int b;print_string "\n";
+				paris:= (b,[])::!paris;
 				b
 		| Some a -> match !paris with
 				| [] ->a
-				| (b,l) :: q -> paris:=(b,a::l)::q;print_string "on déduit ";print_int a;print_string "\n";
+				| (b,l) :: q -> paris:=(b,a::l)::q;
 						a
 ;;
 
@@ -51,8 +51,7 @@ let a=uneafec tab_act_pos tab_act_neg nb_lit nb_lit_f t_cl_v tab_aff paris tabcl
 
 let back tab_act_pos tab_act_neg tab_des_pos tab_des_neg nb_lit nb_lit_f t_cl_v tab_aff paris tabclau=match !paris with
 | [] -> raise Insatisfiable
-| (a,ded)::q -> print_string "On backtrack sur "; print_int a;print_string "\n";
-			(retour_sur (a::ded) tab_act_pos tab_act_neg tab_des_pos tab_des_neg tab_aff tabclau nb_lit_f t_cl_v;
+| (a,ded)::q -> 	(retour_sur (a::ded) tab_act_pos tab_act_neg tab_des_pos tab_des_neg tab_aff tabclau nb_lit_f t_cl_v;
 			tab_aff.(abs a) <- if a > 0 then Faux else Vrai ;
 			propage (-a) tab_act_pos tab_act_neg tab_des_pos tab_des_neg nb_lit_f tabclau t_cl_v;
 			match q with

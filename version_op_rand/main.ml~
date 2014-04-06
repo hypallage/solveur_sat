@@ -102,7 +102,7 @@ let resoud pariheu = let entree = parse () in
    | Insatisfiable -> print_string "s UNSATISFIABLE\n"
 ;;
 
-let _ = Random.self_init;resoud pari_rand;;
+let _ = Random.self_init() ;resoud pari_rand;;
 
 
 

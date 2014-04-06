@@ -3,7 +3,10 @@
 rm -f comparaison.dat
 echo "nb_var normal rand" >> comparaison.dat
 
-for nb_var in `seq 50 55`; do
+for nb_var in `seq 50 51`; do
+temps_tot_norm=0.00
+echo $temps_tot_norm
+for nb_fois in `seq 1 2`; do
 
 cd "generateur 3_SAT" 
  ./calc $nb_var $((4*nb_var)) # On cree la formule 
@@ -19,11 +22,14 @@ cd ../version_op
   echo $entree | /usr/bin/time -f'%U' -o /tmp/toto.txt ./resol ex.cnf
 # on recupere ensuite dans TEMPS1 le contenu de /tmp/toto.txt
   TEMPS1=`cat /tmp/toto.txt`
-
-cd ../version_op_rand
+  echo $TEMPS1
+  temps_tot_norm="($temps_tot_norm + $TEMPS1)" | bc
+  echo "($temps_tot_norm + $TEMPS1)" | bc
+  echo $temps_tot_norm
+ cd ../version_op_rand
 # meme chose avec rand
   echo $entree | /usr/bin/time -f'%U' -o /tmp/toto.txt ./resol ex.cnf 
-  TEMPS2=`cat /tmp/toto.txt`
+  TEMPS2=`cat /tmp/toto.txt` 
 
 cd ..
 
@@ -31,7 +37,8 @@ cd ..
   echo $nb_var $TEMPS1  $TEMPS2 >> ./comparaison.dat 
 
 done
-
+echo $temps_tot_norm
+done
 
 # a noter que vous pouvez passer un ou plusieurs arguments a ce
 # script, auxquels vous ferez reference par $1, $2, etc. Par exemple,
