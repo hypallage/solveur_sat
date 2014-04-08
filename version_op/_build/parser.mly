@@ -20,8 +20,8 @@
 /*               Regles de grammaire                      */
 
 main:                       /* le point d'entrée */
-   commentaire_liste suite  {Printf.printf "toto\n" ; $2}
- | suite                    {Printf.printf "titi\n" ; $1} 
+   commentaire_liste suite  {$2}
+ | suite                    {$1} 
    
 suite :
   P C N F INT INT EOL liste { $5::$6::$8 } 

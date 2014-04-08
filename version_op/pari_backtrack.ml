@@ -42,43 +42,44 @@ let pari_rand tab_aff nbvar nblitf tabclau t_cl_v tab_act_pos tab_act_neg =
   let rand = (Random.int n) + 1 in 
   k_ieme var_inconnues rand ;;
 (*Heuristique MOMS sans tenir compte des variables fausses*)
-let clautaillmin nbvar t_cl_v =print_int 1;
-	let rec clatm numclau min rep =print_int 1;
+(* La fonction cherche les clauses non satisfaites de tailles minimum et la taille minimum*)
+let clautaillmin nbvar t_cl_v =
+	let rec clatm1 numclau min rep =
 		if (numclau = Array.length t_cl_v)
 			then rep
 			else (match t_cl_v.(numclau) with
-			| Vrai -> clatm (numclau+1) min rep
+			| Vrai -> clatm1 (numclau+1) min rep
 			| _ -> 	if (min=0)
-				then clatm (numclau+1) nbvar.(numclau) [numclau]
+				then clatm1 (numclau+1) nbvar.(numclau) [numclau]
 				else 	if (nbvar.(numclau)>min)
-					then clatm (numclau+1) min rep
+					then clatm1 (numclau+1) min rep
 					else 	(if (nbvar.(numclau)<min)
-						then clatm (numclau+1) nbvar.(numclau) [numclau]
-						else clatm (numclau+1) min (numclau::rep)))
-	in clatm 1 0 []
+						then clatm1 (numclau+1) nbvar.(numclau) [numclau]
+						else clatm1 (numclau+1) min (numclau::rep)))
+	in clatm1 1 0 []
 ;;
-let rec remp tab_pos tab_neg clau=print_int 1; match clau with
+
+(*La fonction remplit le tableau d'occurence 
+let rec remp tab_pos tab_neg clau=match clau with
 |[] -> ()
 |t::q -> if t>0
-	then (tab_pos.(t) <- tab_pos.(t) +1;remp tab_pos tab_neg q)
-	else (tab_neg.(abs t) <- tab_neg.(abs t) +1;remp tab_pos tab_neg q)
+	then (tab_pos.(t) <- (tab_pos.(t) +1);remp tab_pos tab_neg q)
+	else (tab_neg.(abs t) <- (tab_neg.(abs t) +1);remp tab_pos tab_neg q)
 ;;
  
-let occur_liste liste tabclau nbvar=print_int 1;
+let occur_liste liste tabclau nbvar=
 let tab_occur_pos=Array.create (Array.length nbvar) 0 
 and tab_occur_neg=Array.create (Array.length nbvar) 0 in
-	let rec ocl lis tab_pos tab_neg=match liste with
+	let rec ocl lis tab_pos tab_neg=match lis with
 	| [] -> (tab_pos,tab_neg)
 	| t::q -> remp tab_pos tab_neg (tabclau.(t));ocl q tab_pos tab_neg
 	in ocl liste tab_occur_pos tab_occur_neg
 ;; 
 
-let pari_moms tab_aff nbvar nblitf tabclau t_cl_v tab_act_pos tab_act_neg=print_string "erere";
+let pari_moms tab_aff nbvar nblitf tabclau t_cl_v tab_act_pos tab_act_neg=
 let clmins = clautaillmin nbvar t_cl_v in
 let (pos,neg)= occur_liste clmins tabclau nbvar in
-	let rec p numvar max pc= if max = 0
-then raise Probleme
-else if (numvar= Array.length tab_aff)
+	let rec p numvar max pc= if (numvar= Array.length tab_aff)
 				then pc
 				else match tab_aff.(numvar) with
 					| Vrai ->  p (numvar+1) max pc
@@ -188,7 +189,7 @@ let rec recupere_quelles_clauses l affectation tabclau tap tan tdp tdn t_cl_v=
    [] -> ()
   |i::q -> let c = tabclau.(i) in 
            match valeur_de_clause c affectation with 
-	     Faux -> print_string "tot";raise Probleme
+	     Faux -> raise Probleme
           |Vrai -> recupere_quelles_clauses q affectation tabclau tap tan tdp tdn t_cl_v
           |Inconnu ->
 	  t_cl_v.(i) <-Inconnu;

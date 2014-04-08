@@ -3,6 +3,7 @@ open Atomes;;
 open Pari_backtrack;;
 open Pretraitement;;
 open Types;;
+open Appel_tseitin;;
 (*/// Affichage de la solution ///*)
 
 let print_litteral i l = match l with
@@ -58,11 +59,10 @@ let back tab_act_pos tab_act_neg tab_des_pos tab_des_neg nb_lit nb_lit_f t_cl_v 
 			  | [] -> paris:=[]
 			  | (d,ded1)::q1 -> paris:=(d,(-a)::ded1)::q1)
 ;;		
+let lexbuf file=let f=open_in file in
+Lexing.from_channel f;;
 
-
-let lexbuf = Lexing.from_channel stdin;;
-
-let parse () = Parser.main Lexer.token lexbuf;;
+let parse file = Parser.main Lexer.token (lexbuf file);;
 
 let printb b= match b with
 true -> print_string "true"
@@ -76,7 +76,7 @@ let rec contain l a= match l with
 ;;
 
 
-let resoud pariheu = let entree = parse () in
+let resoud pariheu file = let entree = parse file in
   let (nb_clause,n,tabclau) = construire_formule entree in
   let tab_aff = init_affectation n 
   and (tab_act_pos,tab_act_neg,nb_lit) = init_les_tab tabclau n nb_clause 
@@ -101,7 +101,39 @@ let resoud pariheu = let entree = parse () in
    | Insatisfiable -> print_string "s UNSATISFIABLE\n"
 ;;
 
-let _ = Random.self_init() ;resoud pari;;
+
+let rand = ref false and dlis = ref false and moms= ref false and moms2= ref false and tseitin=ref false;;
+
+
+let _ =
+let speclist = [("-rand", Arg.Set rand, "Execute le programme avec l'heuristique rand");
+("-dlis", Arg.Set dlis, "Execute le programme avec l'heuristique dlis");
+("-moms", Arg.Set moms, "Execute le programme avec l'heuristique moms");
+("-moms2", Arg.Set moms2, "Execute le programme avec l'heuristique moms2");
+("-tseitin", Arg.Set tseitin, "Execute le programme à partir d'une formule quelconque");
+]
+in let usage_msg = "Sat Solveur réalisé par Patrice Coudert et Wiliam Aufort"
+in Arg.parse speclist (fun anon -> ()) usage_msg;
+if (!tseitin)
+then (if (!rand)
+	then (let file=open_in Sys.argv.(3) in calc file;resoud pari_rand "ex-tseitin.cnf")
+	else if (!dlis)
+		then (let file=open_in Sys.argv.(3) in calc file;resoud pari_dlis "ex-tseitin.cnf")
+		else  if (!moms)
+			then (let file=open_in Sys.argv.(3) in calc file;resoud pari_moms "ex-tseitin.cnf")
+			else if (!moms2)
+				then (let file=open_in Sys.argv.(3) in calc file;resoud pari_moms2 "ex-tseitin.cnf")
+				else (let file=open_in Sys.argv.(2) in calc file;resoud pari "ex-tseitin.cnf"))
+else (if (!rand)
+	then resoud pari_rand Sys.argv.(2)
+	else if (!dlis)
+		then resoud pari_dlis Sys.argv.(2)
+		else  if (!moms)
+			then resoud pari_moms Sys.argv.(2)
+			else if (!moms2)
+				then resoud pari_moms2 Sys.argv.(2) 
+				else resoud pari Sys.argv.(1))
+;;
 
 
 

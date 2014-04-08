@@ -1,1 +1,1 @@
-main.ml: Array Atomes Lexer Lexing Pari_backtrack Parser Pretraitement Propagation Random Types
+main.ml: Appel_tseitin Arg Array Atomes Lexer Lexing Pari_backtrack Parser Pretraitement Propagation Sys Types
