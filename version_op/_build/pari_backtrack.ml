@@ -42,6 +42,7 @@ let pari_rand tab_aff nbvar nblitf tabclau t_cl_v tab_act_pos tab_act_neg =
   let rand = (Random.int n) + 1 in 
   k_ieme var_inconnues rand ;;
 (*Heuristique MOMS sans tenir compte des variables fausses*)
+(* La fonction cherche les clauses non satisfaites de tailles minimum et la taille minimum*)
 let clautaillmin nbvar t_cl_v =
 	let rec clatm1 numclau min rep =
 		if (numclau = Array.length t_cl_v)
@@ -57,6 +58,9 @@ let clautaillmin nbvar t_cl_v =
 						else clatm1 (numclau+1) min (numclau::rep)))
 	in clatm1 1 0 []
 ;;
+
+(*La fonction remplit le tableau d'occurence des variables dans les clauses trouvé par la fonction
+précédent*)
 let rec remp tab_pos tab_neg clau=match clau with
 |[] -> ()
 |t::q -> if t>0

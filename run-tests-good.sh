@@ -3,7 +3,7 @@
 rm -f comparaison.dat
 echo "nb_var normal rand moms1 moms2 dlis" >> comparaison.dat
 
-for i in `seq 1 10`; do
+for i in `seq 1 2`; do
 
 nb_var=$((10*i+20)) # On compare les algos pou ces valeurs de nb_var
 a=0.00

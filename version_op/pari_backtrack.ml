@@ -59,7 +59,8 @@ let clautaillmin nbvar t_cl_v =
 	in clatm1 1 0 []
 ;;
 
-(*La fonction remplit le tableau d'occurence 
+(*La fonction remplit le tableau d'occurence des variables dans les clauses trouvé par la fonction
+précédent*)
 let rec remp tab_pos tab_neg clau=match clau with
 |[] -> ()
 |t::q -> if t>0
