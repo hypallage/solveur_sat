@@ -15,14 +15,14 @@ set ylabel "Temps d'execution"
 
 
 # Dessin en joignant des points
-set style data lines
+set style data points
 
-set pointsize 2   # la taille des points
+set pointsize 0.3   # la taille des points
 set logscale y
 
 # on trace deux courbes: avec les colonnes 1 et 2, avec les colonnes 1 et 3
 # a chaque fois, le nom de la courbe est lu en tete de colonne
-plot "comparaison.dat" using 1:2 title columnheader(2), \
+plot "comparaison.dat" using 1:($1<150 ? $2 : 1/0) title columnheader(2), \
      "comparaison.dat" using 1:3 title columnheader(3), \
      "comparaison.dat" using 1:4 title columnheader(4), \
      "comparaison.dat" using 1:5 title columnheader(5), \

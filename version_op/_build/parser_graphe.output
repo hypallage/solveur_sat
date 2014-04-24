@@ -1,0 +1,455 @@
+   0  $accept : %entry% $end
+
+   1  main : commentaire_liste suite
+   2       | suite
+
+   3  suite : P E F INT INT EOL liste_arrete
+
+   4  liste_arrete : EOF
+   5               | clause liste_arrete
+   6               | commentaire liste_arrete
+
+   7  commentaire_liste : commentaire commentaire_liste
+   8                    | commentaire
+
+   9  commentaire : C texte
+
+  10  texte : P texte
+  11        | C texte
+  12        | F texte
+  13        | E texte
+  14        | EDGE texte
+  15        | ZERO texte
+  16        | INT texte
+  17        | TRUC texte
+  18        | EOL
+
+  19  clause : E INT INT clause
+  20         | EOL
+
+  21  %entry% : '\001' main
+
+state 0
+	$accept : . %entry% $end  (0)
+
+	'\001'  shift 1
+	.  error
+
+	%entry%  goto 2
+
+
+state 1
+	%entry% : '\001' . main  (21)
+
+	P  shift 3
+	C  shift 4
+	.  error
+
+	main  goto 5
+	commentaire_liste  goto 6
+	suite  goto 7
+	commentaire  goto 8
+
+
+state 2
+	$accept : %entry% . $end  (0)
+
+	$end  accept
+
+
+state 3
+	suite : P . E F INT INT EOL liste_arrete  (3)
+
+	E  shift 9
+	.  error
+
+
+state 4
+	commentaire : C . texte  (9)
+
+	INT  shift 10
+	P  shift 11
+	C  shift 12
+	F  shift 13
+	E  shift 14
+	EDGE  shift 15
+	ZERO  shift 16
+	EOL  shift 17
+	TRUC  shift 18
+	.  error
+
+	texte  goto 19
+
+
+state 5
+	%entry% : '\001' main .  (21)
+
+	.  reduce 21
+
+
+state 6
+	main : commentaire_liste . suite  (1)
+
+	P  shift 3
+	.  error
+
+	suite  goto 20
+
+
+state 7
+	main : suite .  (2)
+
+	.  reduce 2
+
+
+state 8
+	commentaire_liste : commentaire . commentaire_liste  (7)
+	commentaire_liste : commentaire .  (8)
+
+	C  shift 4
+	P  reduce 8
+
+	commentaire_liste  goto 21
+	commentaire  goto 8
+
+
+state 9
+	suite : P E . F INT INT EOL liste_arrete  (3)
+
+	F  shift 22
+	.  error
+
+
+state 10
+	texte : INT . texte  (16)
+
+	INT  shift 10
+	P  shift 11
+	C  shift 12
+	F  shift 13
+	E  shift 14
+	EDGE  shift 15
+	ZERO  shift 16
+	EOL  shift 17
+	TRUC  shift 18
+	.  error
+
+	texte  goto 23
+
+
+state 11
+	texte : P . texte  (10)
+
+	INT  shift 10
+	P  shift 11
+	C  shift 12
+	F  shift 13
+	E  shift 14
+	EDGE  shift 15
+	ZERO  shift 16
+	EOL  shift 17
+	TRUC  shift 18
+	.  error
+
+	texte  goto 24
+
+
+state 12
+	texte : C . texte  (11)
+
+	INT  shift 10
+	P  shift 11
+	C  shift 12
+	F  shift 13
+	E  shift 14
+	EDGE  shift 15
+	ZERO  shift 16
+	EOL  shift 17
+	TRUC  shift 18
+	.  error
+
+	texte  goto 25
+
+
+state 13
+	texte : F . texte  (12)
+
+	INT  shift 10
+	P  shift 11
+	C  shift 12
+	F  shift 13
+	E  shift 14
+	EDGE  shift 15
+	ZERO  shift 16
+	EOL  shift 17
+	TRUC  shift 18
+	.  error
+
+	texte  goto 26
+
+
+state 14
+	texte : E . texte  (13)
+
+	INT  shift 10
+	P  shift 11
+	C  shift 12
+	F  shift 13
+	E  shift 14
+	EDGE  shift 15
+	ZERO  shift 16
+	EOL  shift 17
+	TRUC  shift 18
+	.  error
+
+	texte  goto 27
+
+
+state 15
+	texte : EDGE . texte  (14)
+
+	INT  shift 10
+	P  shift 11
+	C  shift 12
+	F  shift 13
+	E  shift 14
+	EDGE  shift 15
+	ZERO  shift 16
+	EOL  shift 17
+	TRUC  shift 18
+	.  error
+
+	texte  goto 28
+
+
+state 16
+	texte : ZERO . texte  (15)
+
+	INT  shift 10
+	P  shift 11
+	C  shift 12
+	F  shift 13
+	E  shift 14
+	EDGE  shift 15
+	ZERO  shift 16
+	EOL  shift 17
+	TRUC  shift 18
+	.  error
+
+	texte  goto 29
+
+
+state 17
+	texte : EOL .  (18)
+
+	.  reduce 18
+
+
+state 18
+	texte : TRUC . texte  (17)
+
+	INT  shift 10
+	P  shift 11
+	C  shift 12
+	F  shift 13
+	E  shift 14
+	EDGE  shift 15
+	ZERO  shift 16
+	EOL  shift 17
+	TRUC  shift 18
+	.  error
+
+	texte  goto 30
+
+
+state 19
+	commentaire : C texte .  (9)
+
+	.  reduce 9
+
+
+state 20
+	main : commentaire_liste suite .  (1)
+
+	.  reduce 1
+
+
+state 21
+	commentaire_liste : commentaire commentaire_liste .  (7)
+
+	.  reduce 7
+
+
+state 22
+	suite : P E F . INT INT EOL liste_arrete  (3)
+
+	INT  shift 31
+	.  error
+
+
+state 23
+	texte : INT texte .  (16)
+
+	.  reduce 16
+
+
+state 24
+	texte : P texte .  (10)
+
+	.  reduce 10
+
+
+state 25
+	texte : C texte .  (11)
+
+	.  reduce 11
+
+
+state 26
+	texte : F texte .  (12)
+
+	.  reduce 12
+
+
+state 27
+	texte : E texte .  (13)
+
+	.  reduce 13
+
+
+state 28
+	texte : EDGE texte .  (14)
+
+	.  reduce 14
+
+
+state 29
+	texte : ZERO texte .  (15)
+
+	.  reduce 15
+
+
+state 30
+	texte : TRUC texte .  (17)
+
+	.  reduce 17
+
+
+state 31
+	suite : P E F INT . INT EOL liste_arrete  (3)
+
+	INT  shift 32
+	.  error
+
+
+state 32
+	suite : P E F INT INT . EOL liste_arrete  (3)
+
+	EOL  shift 33
+	.  error
+
+
+state 33
+	suite : P E F INT INT EOL . liste_arrete  (3)
+
+	C  shift 4
+	E  shift 34
+	EOF  shift 35
+	EOL  shift 36
+	.  error
+
+	liste_arrete  goto 37
+	clause  goto 38
+	commentaire  goto 39
+
+
+state 34
+	clause : E . INT INT clause  (19)
+
+	INT  shift 40
+	.  error
+
+
+state 35
+	liste_arrete : EOF .  (4)
+
+	.  reduce 4
+
+
+state 36
+	clause : EOL .  (20)
+
+	.  reduce 20
+
+
+state 37
+	suite : P E F INT INT EOL liste_arrete .  (3)
+
+	.  reduce 3
+
+
+state 38
+	liste_arrete : clause . liste_arrete  (5)
+
+	C  shift 4
+	E  shift 34
+	EOF  shift 35
+	EOL  shift 36
+	.  error
+
+	liste_arrete  goto 41
+	clause  goto 38
+	commentaire  goto 39
+
+
+state 39
+	liste_arrete : commentaire . liste_arrete  (6)
+
+	C  shift 4
+	E  shift 34
+	EOF  shift 35
+	EOL  shift 36
+	.  error
+
+	liste_arrete  goto 42
+	clause  goto 38
+	commentaire  goto 39
+
+
+state 40
+	clause : E INT . INT clause  (19)
+
+	INT  shift 43
+	.  error
+
+
+state 41
+	liste_arrete : clause liste_arrete .  (5)
+
+	.  reduce 5
+
+
+state 42
+	liste_arrete : commentaire liste_arrete .  (6)
+
+	.  reduce 6
+
+
+state 43
+	clause : E INT INT . clause  (19)
+
+	E  shift 34
+	EOL  shift 36
+	.  error
+
+	clause  goto 44
+
+
+state 44
+	clause : E INT INT clause .  (19)
+
+	.  reduce 19
+
+
+14 terminals, 9 nonterminals
+22 grammar rules, 45 states

@@ -15,7 +15,7 @@ set ylabel "Temps d'execution"
 
 
 # Dessin en joignant des points
-set style data linespoints
+set style data lines
 
 set pointsize 2   # la taille des points
 set logscale y
