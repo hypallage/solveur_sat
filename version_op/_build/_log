@@ -1,6 +1,6 @@
 ### Starting build.
 # Target: main.ml.depends, tags: { extension:ml, file:main.ml, ocaml, ocamldep, quiet }
-/usr/bin/ocamldep -modules main.ml > main.ml.depends
+/usr/bin/ocamldep -modules main.ml > main.ml.depends # cached
 # Target: appel_graphe.ml.depends, tags: { extension:ml, file:appel_graphe.ml, ocaml, ocamldep, quiet }
 /usr/bin/ocamldep -modules appel_graphe.ml > appel_graphe.ml.depends # cached
 # Target: lexer_graphe.mll, tags: { extension:mll, file:lexer_graphe.mll, lexer, ocaml, ocamllex, quiet }
@@ -74,7 +74,7 @@
 # Target: propagation.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:propagation.cmo, file:propagation.ml, implem, ocaml, quiet }
 /usr/bin/ocamlc -c -o propagation.cmo propagation.ml # cached
 # Target: main.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:main.cmo, file:main.ml, implem, ocaml, quiet }
-/usr/bin/ocamlc -c -o main.cmo main.ml
+/usr/bin/ocamlc -c -o main.cmo main.ml # cached
 # Target: parser_graphe.ml.depends, tags: { extension:ml, file:parser_graphe.ml, ocaml, ocamldep, quiet }
 /usr/bin/ocamldep -modules parser_graphe.ml > parser_graphe.ml.depends # cached
 # Target: parser_graphe.cmx, tags: { compile, extension:cmx, extension:ml, file:parser_graphe.cmx, file:parser_graphe.ml, implem, native, ocaml, quiet }
@@ -112,7 +112,7 @@
 # Target: propagation.cmx, tags: { compile, extension:cmx, extension:ml, file:propagation.cmx, file:propagation.ml, implem, native, ocaml, quiet }
 /usr/bin/ocamlopt -c -o propagation.cmx propagation.ml # cached
 # Target: main.cmx, tags: { compile, extension:cmx, extension:ml, file:main.cmx, file:main.ml, implem, native, ocaml, quiet }
-/usr/bin/ocamlopt -c -o main.cmx main.ml
+/usr/bin/ocamlopt -c -o main.cmx main.ml # cached
 # Target: main.native, tags: { dont_link_with, extension:native, file:main.native, link, native, ocaml, program, quiet }
-/usr/bin/ocamlopt unix.cmxa parser_graphe.cmx lexer_graphe.cmx types.cmx appel_graphe.cmx expr_tseitin.cmx parser_tseitin.cmx lexer_tseitin.cmx tseitin.cmx appel_tseitin.cmx atomes.cmx parser.cmx lexer.cmx pari_backtrack.cmx pretraitement.cmx propagation.cmx main.cmx -o main.native
+/usr/bin/ocamlopt unix.cmxa parser_graphe.cmx lexer_graphe.cmx types.cmx appel_graphe.cmx expr_tseitin.cmx parser_tseitin.cmx lexer_tseitin.cmx tseitin.cmx appel_tseitin.cmx atomes.cmx parser.cmx lexer.cmx pari_backtrack.cmx pretraitement.cmx propagation.cmx main.cmx -o main.native # cached
 # Compilation successful.

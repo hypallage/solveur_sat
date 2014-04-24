@@ -1,0 +1,25 @@
+READ-ME du Rendu 3
+
+Lors de ce rendu, j'ai implémenté la coloration de graphes et
+étudié les graphes de conflit.
+
+1/Coloration de graphes
+
+J'ai rajouté l'option -graphe qui réclame l'entier qui est utile
+pour la coloration. La commande -help explique(comme toutes les options).
+Ensuite, la méthode est la suivante. On crée k variables par sommets.
+Chaque variables exprime le fait que le sommet est coloré dans la couleur
+k. Une clause imposent ainsi que le sommet est une couleur. Pour finir,
+il suffit de de dire que deux sommets adjacents ne peuvent avoir la même
+couleur(pour la couleur k et l'arrete ij, on a non j(en k) ou non i(en k)). 
+
+On ne met pas de clause qui dit qu'un sommet ne doit avoir qu'une couleur
+car si on a colorié le sommet, alors les autres variables sont déduites car c'est
+l'unique les contenat positivement.
+
+2/Aprentisage de clause
+
+Je viens juste  d'avoir un graphe de conflit à peu près juste. En ce sens où il ne
+manque que la clause qui fait explosé. On a cependant toutes les déductions. Maintenant
+il est quasiment imédiat de le finir mais je n'ai plus le temps. Ceci ne marche que pour
+le premier backtrack.Le programe est dans l'archive pour ne pas pertuber le reste.

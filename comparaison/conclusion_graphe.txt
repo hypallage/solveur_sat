@@ -1,0 +1,13 @@
+Conclusions
+
+1/Graphes
+
+On voit que lorsque la réponse est positive (ce qui est le cas avec
+ 70% et 50% des arretes), le temps d'executionest limité mais
+ l'unsatisfaibilité fait rendre les armes à notre solveur.
+ 
+
+2/Execution avec heuristique
+
+On a étudié ,pour un nombre de variables fixé, le temps d'execution en 3 SAT en fonction du nombres de clauses.
+On remarque un pic au moment où les résultats sont assez partagés.
