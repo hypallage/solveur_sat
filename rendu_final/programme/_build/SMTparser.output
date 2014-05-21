@@ -1,0 +1,236 @@
+   0  $accept : %entry% $end
+
+   1  main : NON INT EGAL INT main
+   2       | NON INT DISEGAL EGAL INT main
+   3       | INT EGAL INT main
+   4       | INT DISEGAL EGAL INT main
+   5       | OU main
+   6       | EOL main
+   7       | EOF
+
+   8  %entry% : '\001' main
+
+state 0
+	$accept : . %entry% $end  (0)
+
+	'\001'  shift 1
+	.  error
+
+	%entry%  goto 2
+
+
+state 1
+	%entry% : '\001' . main  (8)
+
+	INT  shift 3
+	EOF  shift 4
+	EOL  shift 5
+	OU  shift 6
+	NON  shift 7
+	.  error
+
+	main  goto 8
+
+
+state 2
+	$accept : %entry% . $end  (0)
+
+	$end  accept
+
+
+state 3
+	main : INT . EGAL INT main  (3)
+	main : INT . DISEGAL EGAL INT main  (4)
+
+	EGAL  shift 9
+	DISEGAL  shift 10
+	.  error
+
+
+state 4
+	main : EOF .  (7)
+
+	.  reduce 7
+
+
+state 5
+	main : EOL . main  (6)
+
+	INT  shift 3
+	EOF  shift 4
+	EOL  shift 5
+	OU  shift 6
+	NON  shift 7
+	.  error
+
+	main  goto 11
+
+
+state 6
+	main : OU . main  (5)
+
+	INT  shift 3
+	EOF  shift 4
+	EOL  shift 5
+	OU  shift 6
+	NON  shift 7
+	.  error
+
+	main  goto 12
+
+
+state 7
+	main : NON . INT EGAL INT main  (1)
+	main : NON . INT DISEGAL EGAL INT main  (2)
+
+	INT  shift 13
+	.  error
+
+
+state 8
+	%entry% : '\001' main .  (8)
+
+	.  reduce 8
+
+
+state 9
+	main : INT EGAL . INT main  (3)
+
+	INT  shift 14
+	.  error
+
+
+state 10
+	main : INT DISEGAL . EGAL INT main  (4)
+
+	EGAL  shift 15
+	.  error
+
+
+state 11
+	main : EOL main .  (6)
+
+	.  reduce 6
+
+
+state 12
+	main : OU main .  (5)
+
+	.  reduce 5
+
+
+state 13
+	main : NON INT . EGAL INT main  (1)
+	main : NON INT . DISEGAL EGAL INT main  (2)
+
+	EGAL  shift 16
+	DISEGAL  shift 17
+	.  error
+
+
+state 14
+	main : INT EGAL INT . main  (3)
+
+	INT  shift 3
+	EOF  shift 4
+	EOL  shift 5
+	OU  shift 6
+	NON  shift 7
+	.  error
+
+	main  goto 18
+
+
+state 15
+	main : INT DISEGAL EGAL . INT main  (4)
+
+	INT  shift 19
+	.  error
+
+
+state 16
+	main : NON INT EGAL . INT main  (1)
+
+	INT  shift 20
+	.  error
+
+
+state 17
+	main : NON INT DISEGAL . EGAL INT main  (2)
+
+	EGAL  shift 21
+	.  error
+
+
+state 18
+	main : INT EGAL INT main .  (3)
+
+	.  reduce 3
+
+
+state 19
+	main : INT DISEGAL EGAL INT . main  (4)
+
+	INT  shift 3
+	EOF  shift 4
+	EOL  shift 5
+	OU  shift 6
+	NON  shift 7
+	.  error
+
+	main  goto 22
+
+
+state 20
+	main : NON INT EGAL INT . main  (1)
+
+	INT  shift 3
+	EOF  shift 4
+	EOL  shift 5
+	OU  shift 6
+	NON  shift 7
+	.  error
+
+	main  goto 23
+
+
+state 21
+	main : NON INT DISEGAL EGAL . INT main  (2)
+
+	INT  shift 24
+	.  error
+
+
+state 22
+	main : INT DISEGAL EGAL INT main .  (4)
+
+	.  reduce 4
+
+
+state 23
+	main : NON INT EGAL INT main .  (1)
+
+	.  reduce 1
+
+
+state 24
+	main : NON INT DISEGAL EGAL INT . main  (2)
+
+	INT  shift 3
+	EOF  shift 4
+	EOL  shift 5
+	OU  shift 6
+	NON  shift 7
+	.  error
+
+	main  goto 25
+
+
+state 25
+	main : NON INT DISEGAL EGAL INT main .  (2)
+
+	.  reduce 2
+
+
+11 terminals, 3 nonterminals
+9 grammar rules, 26 states

@@ -1,0 +1,5 @@
+"Resource: /home/pacou/Documents/projet_2/generateur/main.ml": "\223\238J\1966;\138\153*\143+\220[\018\244\128"
+"Rule: ocaml: ml -> cmo & cmi (%=main )": "\20412+\\X\202\254\134\247\128?\006\185i\161"
+"Rule: ocaml: ml & cmi -> cmx & o (%=main )": "\195p\236Z\147\246z\234\239,\141f4\024\000F"
+"Rule: ocaml: cmx* & o* -> native (%=main )": "\134\025\149\255\2136\148t\152\167\191X\n\234sm"
+"Rule: ocaml dependencies ml (%=main )": "I7\221\231\161\028=\252w\030J?c^1\r"

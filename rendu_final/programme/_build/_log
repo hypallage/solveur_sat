@@ -1,0 +1,148 @@
+### Starting build.
+# Target: main.ml.depends, tags: { extension:ml, file:main.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules main.ml > main.ml.depends # cached
+# Target: appel_graphe.ml.depends, tags: { extension:ml, file:appel_graphe.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules appel_graphe.ml > appel_graphe.ml.depends # cached
+# Target: lexer_graphe.mll, tags: { extension:mll, file:lexer_graphe.mll, lexer, ocaml, ocamllex, quiet }
+/usr/bin/ocamllex -q lexer_graphe.mll # cached
+# Target: lexer_graphe.ml.depends, tags: { extension:ml, file:lexer_graphe.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules lexer_graphe.ml > lexer_graphe.ml.depends # cached
+# Target: parser_graphe.mly, tags: { extension:mly, file:parser_graphe.mly, ocaml, ocamlyacc, parser, quiet }
+/usr/bin/ocamlyacc -v parser_graphe.mly # cached
+# Target: parser_graphe.mli.depends, tags: { extension:mli, file:parser_graphe.mli, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules parser_graphe.mli > parser_graphe.mli.depends # cached
+# Target: parser_graphe.cmi, tags: { byte, compile, extension:mli, file:parser_graphe.mli, interf, ocaml, quiet }
+/usr/bin/ocamlc -c -o parser_graphe.cmi parser_graphe.mli # cached
+# Target: lexer_graphe.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:lexer_graphe.cmo, file:lexer_graphe.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o lexer_graphe.cmo lexer_graphe.ml # cached
+# Target: types.ml.depends, tags: { extension:ml, file:types.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules types.ml > types.ml.depends # cached
+# Target: types.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:types.cmo, file:types.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o types.cmo types.ml # cached
+# Target: appel_graphe.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:appel_graphe.cmo, file:appel_graphe.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o appel_graphe.cmo appel_graphe.ml # cached
+# Target: appel_tseitin.ml.depends, tags: { extension:ml, file:appel_tseitin.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules appel_tseitin.ml > appel_tseitin.ml.depends # cached
+# Target: expr_tseitin.ml.depends, tags: { extension:ml, file:expr_tseitin.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules expr_tseitin.ml > expr_tseitin.ml.depends # cached
+# Target: expr_tseitin.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:expr_tseitin.cmo, file:expr_tseitin.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o expr_tseitin.cmo expr_tseitin.ml # cached
+# Target: lexer_tseitin.mll, tags: { extension:mll, file:lexer_tseitin.mll, lexer, ocaml, ocamllex, quiet }
+/usr/bin/ocamllex -q lexer_tseitin.mll # cached
+# Target: lexer_tseitin.ml.depends, tags: { extension:ml, file:lexer_tseitin.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules lexer_tseitin.ml > lexer_tseitin.ml.depends # cached
+# Target: parser_tseitin.mly, tags: { extension:mly, file:parser_tseitin.mly, ocaml, ocamlyacc, parser, quiet }
+/usr/bin/ocamlyacc -v parser_tseitin.mly # cached
+# Target: parser_tseitin.mli.depends, tags: { extension:mli, file:parser_tseitin.mli, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules parser_tseitin.mli > parser_tseitin.mli.depends # cached
+# Target: parser_tseitin.cmi, tags: { byte, compile, extension:mli, file:parser_tseitin.mli, interf, ocaml, quiet }
+/usr/bin/ocamlc -c -o parser_tseitin.cmi parser_tseitin.mli # cached
+# Target: lexer_tseitin.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:lexer_tseitin.cmo, file:lexer_tseitin.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o lexer_tseitin.cmo lexer_tseitin.ml # cached
+# Target: tseitin.ml.depends, tags: { extension:ml, file:tseitin.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules tseitin.ml > tseitin.ml.depends # cached
+# Target: tseitin.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:tseitin.cmo, file:tseitin.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o tseitin.cmo tseitin.ml # cached
+# Target: appel_tseitin.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:appel_tseitin.cmo, file:appel_tseitin.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o appel_tseitin.cmo appel_tseitin.ml # cached
+# Target: atomes.ml.depends, tags: { extension:ml, file:atomes.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules atomes.ml > atomes.ml.depends # cached
+# Target: atomes.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:atomes.cmo, file:atomes.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o atomes.cmo atomes.ml # cached
+# Target: lexer.mll, tags: { extension:mll, file:lexer.mll, lexer, ocaml, ocamllex, quiet }
+/usr/bin/ocamllex -q lexer.mll # cached
+# Target: lexer.ml.depends, tags: { extension:ml, file:lexer.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules lexer.ml > lexer.ml.depends # cached
+# Target: parser.mly, tags: { extension:mly, file:parser.mly, ocaml, ocamlyacc, parser, quiet }
+/usr/bin/ocamlyacc -v parser.mly # cached
+# Target: parser.mli.depends, tags: { extension:mli, file:parser.mli, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules parser.mli > parser.mli.depends # cached
+# Target: parser.cmi, tags: { byte, compile, extension:mli, file:parser.mli, interf, ocaml, quiet }
+/usr/bin/ocamlc -c -o parser.cmi parser.mli # cached
+# Target: lexer.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:lexer.cmo, file:lexer.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o lexer.cmo lexer.ml # cached
+# Target: pari_backtrack.ml.depends, tags: { extension:ml, file:pari_backtrack.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules pari_backtrack.ml > pari_backtrack.ml.depends
+# Target: pretraitement.ml.depends, tags: { extension:ml, file:pretraitement.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules pretraitement.ml > pretraitement.ml.depends # cached
+# Target: pretraitement.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:pretraitement.cmo, file:pretraitement.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o pretraitement.cmo pretraitement.ml # cached
+# Target: propagation.ml.depends, tags: { extension:ml, file:propagation.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules propagation.ml > propagation.ml.depends # cached
+# Target: propagation.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:propagation.cmo, file:propagation.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o propagation.cmo propagation.ml # cached
+# Target: SMT_pretraitement.ml.depends, tags: { extension:ml, file:SMT_pretraitement.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules SMT_pretraitement.ml > SMT_pretraitement.ml.depends # cached
+# Target: SMTlexer.mll, tags: { extension:mll, file:SMTlexer.mll, lexer, ocaml, ocamllex, quiet }
+/usr/bin/ocamllex -q SMTlexer.mll # cached
+# Target: SMTlexer.ml.depends, tags: { extension:ml, file:SMTlexer.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules SMTlexer.ml > SMTlexer.ml.depends # cached
+# Target: SMTparser.mly, tags: { extension:mly, file:SMTparser.mly, ocaml, ocamlyacc, parser, quiet }
+/usr/bin/ocamlyacc -v SMTparser.mly # cached
+# Target: SMTparser.mli.depends, tags: { extension:mli, file:SMTparser.mli, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules SMTparser.mli > SMTparser.mli.depends # cached
+# Target: SMTparser.cmi, tags: { byte, compile, extension:mli, file:SMTparser.mli, interf, ocaml, quiet }
+/usr/bin/ocamlc -c -o SMTparser.cmi SMTparser.mli # cached
+# Target: SMTlexer.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:SMTlexer.cmo, file:SMTlexer.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o SMTlexer.cmo SMTlexer.ml # cached
+# Target: SMT_pretraitement.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:SMT_pretraitement.cmo, file:SMT_pretraitement.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o SMT_pretraitement.cmo SMT_pretraitement.ml # cached
+# Target: SMTsolveur.ml.depends, tags: { extension:ml, file:SMTsolveur.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules SMTsolveur.ml > SMTsolveur.ml.depends # cached
+# Target: SMTsolveur.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:SMTsolveur.cmo, file:SMTsolveur.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o SMTsolveur.cmo SMTsolveur.ml # cached
+# Target: pari_backtrack.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:pari_backtrack.cmo, file:pari_backtrack.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o pari_backtrack.cmo pari_backtrack.ml
+# Target: main.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:main.cmo, file:main.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc -c -o main.cmo main.ml # cached
+# Target: parser_graphe.ml.depends, tags: { extension:ml, file:parser_graphe.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules parser_graphe.ml > parser_graphe.ml.depends # cached
+# Target: parser_graphe.cmx, tags: { compile, extension:cmx, extension:ml, file:parser_graphe.cmx, file:parser_graphe.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt -c -o parser_graphe.cmx parser_graphe.ml # cached
+# Target: lexer_graphe.cmx, tags: { compile, extension:cmx, extension:ml, file:lexer_graphe.cmx, file:lexer_graphe.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt -c -o lexer_graphe.cmx lexer_graphe.ml # cached
+# Target: types.cmx, tags: { compile, extension:cmx, extension:ml, file:types.cmx, file:types.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt -c -o types.cmx types.ml # cached
+# Target: appel_graphe.cmx, tags: { compile, extension:cmx, extension:ml, file:appel_graphe.cmx, file:appel_graphe.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt -c -o appel_graphe.cmx appel_graphe.ml # cached
+# Target: expr_tseitin.cmx, tags: { compile, extension:cmx, extension:ml, file:expr_tseitin.cmx, file:expr_tseitin.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt -c -o expr_tseitin.cmx expr_tseitin.ml # cached
+# Target: parser_tseitin.ml.depends, tags: { extension:ml, file:parser_tseitin.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules parser_tseitin.ml > parser_tseitin.ml.depends # cached
+# Target: parser_tseitin.cmx, tags: { compile, extension:cmx, extension:ml, file:parser_tseitin.cmx, file:parser_tseitin.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt -c -o parser_tseitin.cmx parser_tseitin.ml # cached
+# Target: lexer_tseitin.cmx, tags: { compile, extension:cmx, extension:ml, file:lexer_tseitin.cmx, file:lexer_tseitin.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt -c -o lexer_tseitin.cmx lexer_tseitin.ml # cached
+# Target: tseitin.cmx, tags: { compile, extension:cmx, extension:ml, file:tseitin.cmx, file:tseitin.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt -c -o tseitin.cmx tseitin.ml # cached
+# Target: appel_tseitin.cmx, tags: { compile, extension:cmx, extension:ml, file:appel_tseitin.cmx, file:appel_tseitin.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt -c -o appel_tseitin.cmx appel_tseitin.ml # cached
+# Target: atomes.cmx, tags: { compile, extension:cmx, extension:ml, file:atomes.cmx, file:atomes.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt -c -o atomes.cmx atomes.ml # cached
+# Target: parser.ml.depends, tags: { extension:ml, file:parser.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules parser.ml > parser.ml.depends # cached
+# Target: parser.cmx, tags: { compile, extension:cmx, extension:ml, file:parser.cmx, file:parser.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt -c -o parser.cmx parser.ml # cached
+# Target: lexer.cmx, tags: { compile, extension:cmx, extension:ml, file:lexer.cmx, file:lexer.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt -c -o lexer.cmx lexer.ml # cached
+# Target: pretraitement.cmx, tags: { compile, extension:cmx, extension:ml, file:pretraitement.cmx, file:pretraitement.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt -c -o pretraitement.cmx pretraitement.ml # cached
+# Target: propagation.cmx, tags: { compile, extension:cmx, extension:ml, file:propagation.cmx, file:propagation.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt -c -o propagation.cmx propagation.ml # cached
+# Target: SMTparser.ml.depends, tags: { extension:ml, file:SMTparser.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep -modules SMTparser.ml > SMTparser.ml.depends # cached
+# Target: SMTparser.cmx, tags: { compile, extension:cmx, extension:ml, file:SMTparser.cmx, file:SMTparser.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt -c -o SMTparser.cmx SMTparser.ml # cached
+# Target: SMTlexer.cmx, tags: { compile, extension:cmx, extension:ml, file:SMTlexer.cmx, file:SMTlexer.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt -c -o SMTlexer.cmx SMTlexer.ml # cached
+# Target: SMT_pretraitement.cmx, tags: { compile, extension:cmx, extension:ml, file:SMT_pretraitement.cmx, file:SMT_pretraitement.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt -c -o SMT_pretraitement.cmx SMT_pretraitement.ml # cached
+# Target: SMTsolveur.cmx, tags: { compile, extension:cmx, extension:ml, file:SMTsolveur.cmx, file:SMTsolveur.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt -c -o SMTsolveur.cmx SMTsolveur.ml # cached
+# Target: pari_backtrack.cmx, tags: { compile, extension:cmx, extension:ml, file:pari_backtrack.cmx, file:pari_backtrack.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt -c -o pari_backtrack.cmx pari_backtrack.ml
+# Target: main.cmx, tags: { compile, extension:cmx, extension:ml, file:main.cmx, file:main.ml, implem, native, ocaml, quiet }
+/usr/bin/ocamlopt -c -o main.cmx main.ml # cached
+# Target: main.native, tags: { dont_link_with, extension:native, file:main.native, link, native, ocaml, program, quiet }
+/usr/bin/ocamlopt unix.cmxa SMTparser.cmx SMTlexer.cmx types.cmx SMT_pretraitement.cmx SMTsolveur.cmx parser_graphe.cmx lexer_graphe.cmx appel_graphe.cmx expr_tseitin.cmx parser_tseitin.cmx lexer_tseitin.cmx tseitin.cmx appel_tseitin.cmx atomes.cmx parser.cmx lexer.cmx pari_backtrack.cmx pretraitement.cmx propagation.cmx main.cmx -o main.native
+# Compilation successful.
